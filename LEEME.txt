@@ -1,0 +1,39 @@
+MALLORCA AGRO - GESTOR DE AVISOS PARA LLUBI
+========================================
+
+WINDOWS
+Extrae todo el ZIP. Abre Mallorca-Agro.html con Edge, Chrome o Firefox,
+o haz doble clic en Abrir Alertas.bat. No requiere instalacion ni cuenta.
+Es una app web local, no un instalador EXE. Necesita JavaScript.
+
+PRIMEROS PASOS
+1. En Parcelas, anade tu parcela, cultivo, variedad y estado del cultivo.
+2. En Avisos, revisa las senales y la informacion pendiente.
+3. Marca los avisos revisados o en seguimiento y escribe tus notas.
+4. En Cuaderno, registra sintomas, riego, mojado y capturas de mosca.
+5. En Datos y criterios, exporta copias JSON regularmente.
+
+TUS DATOS
+Se guardan en este navegador y equipo, sin sincronizacion ni cuenta.
+Exporta una copia antes de mover el archivo, cambiar de navegador o borrar
+sus datos. Si mueves la app, conserva la copia y restaurala en la nueva ruta.
+Restaurar una copia sustituye los registros actuales tras confirmacion.
+
+FUENTES Y LIMITES
+Prevision automatica: Open-Meteo, 7 dias para un punto municipal de Llubi.
+Necesita Internet (api.open-meteo.com); se actualiza cada 30 minutos con
+la app abierta. Datos de mas de 6 horas no se usan para evaluar el tiempo.
+Balears Meteo / Son Rossinyol: consulta manual enlazada en la app.
+Esta version NO importa automaticamente esa estacion.
+
+Los avisos son indicadores orientativos, no diagnosticos ni instrucciones
+de tratamiento. El oidio usa un indicador termico, no el indice UC Davis.
+Para mildiu, sin mojado foliar medido no se calcula una infeccion.
+Para mosca, el estado de la fruta y las capturas importan mas que un mes fijo.
+Las revisiones caducan al cambiar el dia o los datos del aviso.
+No hay notificaciones, correos ni alertas cuando la app esta cerrada.
+Las referencias tecnicas, atribuciones y condiciones estan dentro de la app,
+en Datos y criterios. Consulta a tu tecnico para decisiones de tratamiento.
+
+Se ha probado en Chromium Linux, no directamente en Windows.
+La vista de temperaturas de Mallorca anterior se conserva en temperaturas.html.

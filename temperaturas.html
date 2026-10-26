@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Mallorca · Temperatura de la isla</title>
+<style>
+:root{font-family:Segoe UI,system-ui,sans-serif;color:#183b3a;background:#f4f5ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0}main{max-width:1080px;margin:auto;padding:36px 24px 48px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:48px}.brand{font-weight:750;font-size:20px;letter-spacing:-.6px}.brand span{color:#728480;font-weight:400}button{border:1px solid #bdcdc5;border-radius:30px;background:transparent;color:#183b3a;padding:12px 20px;font:inherit;cursor:pointer}button:hover{background:#e4ebe2}button:disabled{opacity:.55;cursor:wait}button:focus-visible,a:focus-visible{outline:3px solid #c27729;outline-offset:4px}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#647b70}h1{font-size:clamp(34px,5vw,56px);letter-spacing:-2px;font-weight:550;margin:12px 0}p{line-height:1.6}.intro{color:#627773;max-width:640px;margin-bottom:30px}.hero{position:relative;overflow:hidden;border-radius:24px;background:#173e3c;color:#f5f5e8;padding:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px}.hero .eyebrow{color:#b6d4bf}.temperature{font-size:clamp(76px,13vw,122px);letter-spacing:-7px;font-weight:350;line-height:1.2;margin:16px 0}.temperature small{font-size:.45em;letter-spacing:-2px;color:#c7ddcd}.hero p{color:#c7ddcd;max-width:450px;font-size:14px}.island{margin:0;min-width:0;min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center}.island svg{display:block;width:100%;max-width:440px;height:auto}.map-labels text{font-family:Segoe UI,system-ui,sans-serif;font-size:11px;font-weight:600;fill:#fff7dc;paint-order:stroke;stroke:#23463c;stroke-width:3px;stroke-linejoin:round}.island figcaption{font-size:12px;color:#c7ddcd;margin-top:8px}.status{font-size:13px;margin-top:22px;min-height:24px;color:#c7ddcd}.status.error{color:#ffdab6}.section-top{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-top:36px}h2{font-size:22px;font-weight:600;letter-spacing:-.5px}.tag{font-size:12px;color:#61776c}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid #e0e6dc;border-radius:16px;padding:22px}.card h3{font-size:15px;margin:0 0 16px;font-weight:600}.local-temp{font-size:32px;letter-spacing:-1px}.weather{color:#6c7d74;font-size:13px;min-height:20px;margin-top:8px}.meter{height:4px;border-radius:4px;background:#e8eee5;margin-top:20px;overflow:hidden}.meter span{display:block;height:100%;width:0;background:#b8c888;border-radius:4px}.note{background:#e9eee3;padding:22px 24px;border-radius:16px;margin-top:26px;color:#536c5e;font-size:13px}.note strong{color:#234e40}footer{margin-top:28px;font-size:12px;color:#738078;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}a{color:inherit}noscript{display:block;padding:24px;background:#ffe5bf}@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.island{width:100%;max-width:440px;justify-self:center}header{margin-bottom:30px}.hero{padding:28px}.section-top{display:block}.tag{display:block;margin-bottom:18px}}@media(prefers-reduced-motion:no-preference){.meter span{transition:width .5s}}
+</style>
+</head>
+<body>
+<noscript>Activa JavaScript en tu navegador para consultar las temperaturas.</noscript>
+<main>
+<header><div class="brand">mallorca<span> / temperatura</span></div><button id="refresh" type="button">Actualizar ↻</button></header>
+<div class="eyebrow">El tiempo en la isla</div>
+<h1>Mallorca, en grados.</h1>
+<p class="intro">Una mirada a la temperatura actual de la isla, desde la costa hasta el interior. Datos en grados Celsius.</p>
+<section class="hero" aria-label="Temperatura media de Mallorca">
+<div><div class="eyebrow">Media de 8 localidades</div><div class="temperature"><span id="average">—</span><small> °C</small></div><p>Estimación a partir de Palma, Calvià, Andratx, Sóller, Inca, Alcúdia, Manacor y Santanyí.</p><div class="status" id="status" role="status" aria-live="polite">Preparando consulta…</div></div>
+<figure class="island"><svg viewBox="0 0 440 350" role="img" aria-labelledby="map-title map-desc"><title id="map-title">Mapa de Mallorca</title><desc id="map-desc">Contorno geográfico de Mallorca con las ocho localidades consultadas. Norte hacia arriba.</desc><defs><linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7c99a"/><stop offset="1" stop-color="#729c7e"/></linearGradient></defs><rect width="440" height="350" rx="20" fill="#204947"/><path d="M348.75,113.94L357.14,116.38L373.72,126.25L383.85,127.11L382.14,131.06L382.40,134.20L383.35,137.04L383.85,140.10L382.73,142.08L380.92,143.57L380.06,145.98L381.85,150.72L377.85,161.32L374.73,166.60L370.84,168.86L365.91,170.67L362.62,175.17L361.69,181.06L363.84,187.05L351.95,198.04L339.60,212.93L330.38,231.21L327.67,252.36L324.81,250.59L323.66,249.53L318.92,265.25L309.68,275.24L282.85,292.02L271.60,301.77L269.34,305.56L268.12,306.78L265.45,308.73L262.76,309.75L261.54,308.27L253.54,296.24L251.68,294.89L247.10,292.78L245.34,291.28L244.01,287.75L243.39,283.58L242.43,280.04L240.34,278.57L237.48,277.68L232.90,273.97L230.33,273.11L226.85,273.54L222.23,275.30L219.37,275.71L193.85,273.83L182.48,269.15L175.19,259.92L172.12,239.18L167.83,236.40L168.69,230.25L173.19,221.00L169.85,213.11L161.54,205.46L151.75,199.71L144.03,197.40L137.64,199.48L118.79,210.02L114.86,214.38L111.71,224.66L104.47,232.32L96.42,233.31L90.89,223.60L90.27,222.79L89.48,219.76L90.41,217.38L92.89,215.84L85.08,207.78L82.69,211.03L80.45,212.42L78.40,211.48L76.88,207.78L68.78,212.51L66.89,212.98L64.04,210.89L61.58,204.07L56.29,199.71L54.86,192.94L55.15,185.24L56.89,179.48L77.88,166.26L84.05,164.87L89.27,161.44L103.71,145.95L108.05,143.58L113.91,142.70L118.96,141.03L123.91,136.95L133.02,127.11L134.26,125.30L136.35,120.59L137.02,119.35L138.38,119.01L141.74,119.69L143.02,119.35L150.10,112.15L151.03,110.28L152.32,109.44L158.27,102.62L160.23,100.95L162.37,100.35L171.00,95.99L175.19,92.60L178.55,89.14L181.96,86.45L186.30,85.37L187.34,84.59L189.20,81.19L190.28,80.42L196.40,80.96L199.16,80.42L207.79,76.27L225.42,64.49L234.45,62.03L250.89,60.44L267.12,56.28L297.50,43.86L301.50,49.06L303.05,47.47L303.91,47.00L307.67,49.06L304.58,51.32L294.28,56.17L290.52,57.07L286.21,59.33L282.27,63.66L278.77,66.67L275.51,64.86L273.34,64.86L272.70,77.14L283.08,78.96L305.51,72.66L305.51,75.01L302.58,77.14L302.22,79.68L302.48,82.49L301.50,85.37L299.76,87.34L298.10,88.47L293.33,90.56L284.06,92.97L281.94,95.90L281.51,103.78L284.92,112.27L292.57,119.74L302.00,125.10L310.51,127.11L330.60,127.11L335.70,125.07L344.61,115.98L348.75,113.94Z" fill="none" stroke="#42726a" stroke-width="10" stroke-linejoin="round" opacity=".6"/><path id="mallorca-coast" d="M348.75,113.94L357.14,116.38L373.72,126.25L383.85,127.11L382.14,131.06L382.40,134.20L383.35,137.04L383.85,140.10L382.73,142.08L380.92,143.57L380.06,145.98L381.85,150.72L377.85,161.32L374.73,166.60L370.84,168.86L365.91,170.67L362.62,175.17L361.69,181.06L363.84,187.05L351.95,198.04L339.60,212.93L330.38,231.21L327.67,252.36L324.81,250.59L323.66,249.53L318.92,265.25L309.68,275.24L282.85,292.02L271.60,301.77L269.34,305.56L268.12,306.78L265.45,308.73L262.76,309.75L261.54,308.27L253.54,296.24L251.68,294.89L247.10,292.78L245.34,291.28L244.01,287.75L243.39,283.58L242.43,280.04L240.34,278.57L237.48,277.68L232.90,273.97L230.33,273.11L226.85,273.54L222.23,275.30L219.37,275.71L193.85,273.83L182.48,269.15L175.19,259.92L172.12,239.18L167.83,236.40L168.69,230.25L173.19,221.00L169.85,213.11L161.54,205.46L151.75,199.71L144.03,197.40L137.64,199.48L118.79,210.02L114.86,214.38L111.71,224.66L104.47,232.32L96.42,233.31L90.89,223.60L90.27,222.79L89.48,219.76L90.41,217.38L92.89,215.84L85.08,207.78L82.69,211.03L80.45,212.42L78.40,211.48L76.88,207.78L68.78,212.51L66.89,212.98L64.04,210.89L61.58,204.07L56.29,199.71L54.86,192.94L55.15,185.24L56.89,179.48L77.88,166.26L84.05,164.87L89.27,161.44L103.71,145.95L108.05,143.58L113.91,142.70L118.96,141.03L123.91,136.95L133.02,127.11L134.26,125.30L136.35,120.59L137.02,119.35L138.38,119.01L141.74,119.69L143.02,119.35L150.10,112.15L151.03,110.28L152.32,109.44L158.27,102.62L160.23,100.95L162.37,100.35L171.00,95.99L175.19,92.60L178.55,89.14L181.96,86.45L186.30,85.37L187.34,84.59L189.20,81.19L190.28,80.42L196.40,80.96L199.16,80.42L207.79,76.27L225.42,64.49L234.45,62.03L250.89,60.44L267.12,56.28L297.50,43.86L301.50,49.06L303.05,47.47L303.91,47.00L307.67,49.06L304.58,51.32L294.28,56.17L290.52,57.07L286.21,59.33L282.27,63.66L278.77,66.67L275.51,64.86L273.34,64.86L272.70,77.14L283.08,78.96L305.51,72.66L305.51,75.01L302.58,77.14L302.22,79.68L302.48,82.49L301.50,85.37L299.76,87.34L298.10,88.47L293.33,90.56L284.06,92.97L281.94,95.90L281.51,103.78L284.92,112.27L292.57,119.74L302.00,125.10L310.51,127.11L330.60,127.11L335.70,125.07L344.61,115.98L348.75,113.94Z" fill="url(#land)" stroke="#d2dfb9" stroke-width="1" stroke-linejoin="round"/><g class="map-labels"><g><title>Palma</title><circle cx="142.54" cy="195.55" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="151.54" y="210.55" text-anchor="start">Palma</text></g><g><title>Calvià</title><circle cx="100.37" cy="197.19" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="91.37" y="185.19" text-anchor="end">Calvià</text></g><g><title>Andratx</title><circle cx="75.19" cy="193.77" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="66.19" y="214.77" text-anchor="end">Andratx</text></g><g><title>Sóller</title><circle cx="161.57" cy="120.84" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="152.57" y="107.84" text-anchor="end">Sóller</text></g><g><title>Inca</title><circle cx="218.87" cy="137.98" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="227.87" y="155.98" text-anchor="start">Inca</text></g><g><title>Alcúdia</title><circle cx="280.50" cy="87.78" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="271.50" y="72.78" text-anchor="end">Alcúdia</text></g><g><title>Manacor</title><circle cx="306.33" cy="195.55" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="315.33" y="185.55" text-anchor="start">Manacor</text></g><g><title>Santanyí</title><circle cx="282.76" cy="277.25" r="4" fill="#fff1b6" stroke="#23463c" stroke-width="1.5"/><text x="291.76" y="267.25" text-anchor="start">Santanyí</text></g></g><g fill="#cee0d5"><text x="400" y="28" text-anchor="middle" font-size="11">N</text><path d="M400 36L396 49 400 46 404 49Z"/><text x="30" y="333" font-size="10">20 km aprox.</text><path d="M30 314v5h68v-5" fill="none" stroke="#cee0d5" stroke-width="1.5"/></g></svg><figcaption>Mallorca · Costa: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · Norte arriba</figcaption></figure>
+</section>
+<div class="section-top"><h2>De costa a costa</h2><span class="tag">Temperatura actual · datos meteorológicos de modelo</span></div>
+<section class="grid" id="towns" aria-label="Temperaturas por localidad"></section>
+<aside class="note"><strong>¿Cómo se calcula la media?</strong><br>Es la media aritmética de las ocho temperaturas actuales, con el mismo peso para cada localidad. Es una referencia orientativa: no es una media oficial de toda la superficie de Mallorca ni una media histórica. Los datos proceden de modelos meteorológicos y pueden diferir de una estación local.</aside>
+<footer><span>Fuente: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></span><span>Actualización automática cada 15 minutos · Requiere Internet</span></footer>
+</main>
+<script>
+'use strict';
+const towns = [
+  {name:'Palma',lat:39.5696,lon:2.6502},
+  {name:'Calvià',lat:39.5653,lon:2.5062},
+  {name:'Andratx',lat:39.5743,lon:2.4202},
+  {name:'Sóller',lat:39.7662,lon:2.7152},
+  {name:'Inca',lat:39.7211,lon:2.9109},
+  {name:'Alcúdia',lat:39.8532,lon:3.1214},
+  {name:'Manacor',lat:39.5696,lon:3.2096},
+  {name:'Santanyí',lat:39.3546,lon:3.1291}
+];
+const number = new Intl.NumberFormat('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
+const status = document.getElementById('status');
+const refresh = document.getElementById('refresh');
+const cards = towns.map(town => {
+  const card = document.createElement('article');
+  card.className='card';
+  const title=document.createElement('h3'); title.textContent=town.name;
+  const value=document.createElement('div'); value.className='local-temp'; value.textContent='— °C';
+  const weather=document.createElement('div'); weather.className='weather'; weather.textContent='Pendiente de datos';
+  const meter=document.createElement('div'); meter.className='meter'; meter.setAttribute('aria-hidden','true');
+  const fill=document.createElement('span'); meter.append(fill);
+  card.append(title,value,weather,meter); document.getElementById('towns').append(card);
+  return {value,weather,fill};
+});
+function describe(code){
+  if(code===0)return 'Despejado';
+  if([1,2].includes(code))return 'Parcialmente nuboso';
+  if(code===3)return 'Cubierto';
+  if([45,48].includes(code))return 'Niebla';
+  if(code>=51&&code<=57)return 'Llovizna';
+  if((code>=61&&code<=67)||(code>=80&&code<=82))return 'Lluvia';
+  if((code>=71&&code<=77)||[85,86].includes(code))return 'Nieve';
+  if(code>=95&&code<=99)return 'Tormenta';
+  return 'Estado no disponible';
+}
+function validate(data){
+  if(!Array.isArray(data)||data.length!==towns.length)throw new Error('Respuesta incompleta');
+  data.forEach((item,i)=>{
+    const c=item.current;
+    if(!c||!Number.isFinite(c.temperature_2m)||c.temperature_2m < -60||c.temperature_2m>65||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(c.time)||item.current_units?.temperature_2m!=='°C')throw new Error('Datos no válidos');
+    if(Math.abs(item.latitude-towns[i].lat)>.15||Math.abs(item.longitude-towns[i].lon)>.15)throw new Error('Localidad no válida');
+  });
+  if(new Set(data.map(item=>item.current.time)).size!==1)throw new Error('Horas de datos diferentes');
+  return data;
+}
+let lastSuccess=false;
+async function update(){
+  if(refresh.disabled)return;
+  refresh.disabled=true; status.className='status'; status.textContent='Consultando Open-Meteo…';
+  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),20000);
+  try{
+    const params=new URLSearchParams({latitude:towns.map(t=>t.lat).join(','),longitude:towns.map(t=>t.lon).join(','),current:'temperature_2m,weather_code',timezone:'Europe/Madrid',temperature_unit:'celsius',forecast_days:'1'});
+    const response=await fetch('https://api.open-meteo.com/v1/forecast?'+params,{signal:controller.signal});
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const data=validate(await response.json());
+    const temps=data.map(item=>item.current.temperature_2m);
+    const mean=temps.reduce((a,b)=>a+b,0)/temps.length;
+    document.getElementById('average').textContent=number.format(mean);
+    data.forEach((item,i)=>{
+      cards[i].value.textContent=number.format(temps[i])+' °C';
+      cards[i].weather.textContent=describe(item.current.weather_code);
+      cards[i].fill.style.width=Math.max(2,Math.min(100,(temps[i]+10)/55*100))+'%';
+    });
+    const [day,time]=data[0].current.time.split('T');const [year,month,date]=day.split('-');
+    status.textContent='Datos del '+date+'/'+month+'/'+year+' a las '+time+' · hora de Mallorca';
+    lastSuccess=true;
+  }catch(error){
+    status.className='status error';
+    status.textContent=lastSuccess?'No se pudo actualizar. Se conservan los datos de la última consulta; pueden estar desactualizados. Comprueba Internet y pulsa Actualizar.':'No se pudieron cargar los datos. Comprueba tu conexión a Internet y pulsa Actualizar. Si continúa, el servicio podría estar temporalmente limitado.';
+  }finally{clearTimeout(timeout);refresh.disabled=false;}
+}
+refresh.addEventListener('click',update);
+update();
+setInterval(update,15*60*1000);
+</script>
+</body>
+</html>
